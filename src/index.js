@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Hour from './components/hour'
+import _Date from './components/date'
+import InputLanguage from './components/language'
+import BodyCalendar from './components/body'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const Calendar = (props) => {
+    const language = window.localStorage.getItem('language') || 'en-US'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    return (
+        <div>
+            <_Date utc={ language } />
+            <Hour />
+            <InputLanguage language={ language } />
+            <BodyCalendar language={ language } />
+        </div>
+    )
+}
+
+ReactDOM.render(<Calendar />, document.querySelector('#root'))
