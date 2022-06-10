@@ -37,7 +37,7 @@ function TBody(props){
     let tbody = []
 
     for(let col = 1; col <= months[month-1]; col++){
-        if(day == col){
+        if(parseInt(day) === col){
             row.push(<td style={{color: 'blue'}}>{col}</td>)
         }else{
             row.push(<td>{col}</td>)
